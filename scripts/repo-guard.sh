@@ -17,7 +17,7 @@ fail=0
 # ── 1. ALLOWLIST — every tracked file must match. Anything else is BLOCKED. ──
 #    This is the primary wall: a stray AUDIT.md / spec / notes file is rejected
 #    on filename alone, regardless of its contents.
-allow='^(README\.md|LICENSE|server\.json|icon\.png|logo\.png|\.gitignore|examples/[A-Za-z0-9_-]+\.md|scripts/repo-guard\.sh|\.githooks/pre-commit|\.github/workflows/[A-Za-z0-9_.-]+\.yml)$'
+allow='^(README\.md|LICENSE|server\.json|mcp\.json|icon\.png|logo\.png|\.gitignore|examples/[A-Za-z0-9_-]+\.md|scripts/repo-guard\.sh|\.githooks/pre-commit|\.github/workflows/[A-Za-z0-9_.-]+\.yml)$'
 while IFS= read -r f; do
   [[ "$f" =~ $allow ]] || {
     echo "✗ BLOCKED file: '$f' is not on the public allowlist."
