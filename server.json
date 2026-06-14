@@ -1,0 +1,25 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "com.nicheangle/niche",
+  "title": "Niche — Editorial Intelligence",
+  "description": "Find the stories worth writing about: discover emerging stories, rank the angle, draft from sources.",
+  "version": "1.0.0",
+  "websiteUrl": "https://nicheangle.com",
+  "repository": {
+    "url": "https://github.com/sailquery/niche-mcp",
+    "source": "github"
+  },
+  "icons": [
+    {
+      "src": "https://raw.githubusercontent.com/sailquery/niche-mcp/master/icon.png",
+      "mimeType": "image/png",
+      "sizes": ["1024x1024"]
+    }
+  ],
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://api.nicheangle.com/mcp"
+    }
+  ]
+}

@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# Brick wall — block any commit that would put internal content in this public repo.
+exec "$(git rev-parse --show-toplevel)/scripts/repo-guard.sh"

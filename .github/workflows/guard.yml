@@ -1,0 +1,9 @@
+name: repo-guard
+on: [push, pull_request]
+jobs:
+  guard:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Public-repo brick wall (allowlist + no insider content)
+        run: bash scripts/repo-guard.sh
