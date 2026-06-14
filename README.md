@@ -1,5 +1,7 @@
 # Niche MCP — editorial intelligence for agents
 
+[![smithery badge](https://smithery.ai/badge/sailquery/niche)](https://smithery.ai/servers/sailquery/niche)
+
 > **Find stories worth writing about.** Niche is an **editorial intelligence
 > platform for individuals** (and the agents working for them), exposed as a live
 > [MCP](https://modelcontextprotocol.io) server. When
