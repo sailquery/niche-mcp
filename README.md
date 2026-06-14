@@ -114,10 +114,11 @@ Full install notes: **[nicheangle.com/integrations](https://nicheangle.com/integ
 
 **Signal-to-story**
 - `niche_draft_create` · `niche_draft_revise` · `niche_draft_publish` (publish dry-runs by default)
-- `niche_draft_direct` — skip research and draft straight from your own take or a URL.
+- `niche_draft_direct` — skip research and draft straight from your own take or a URL, with optional per-claim grounding against the source.
 
 **Render**
 - `niche_render_image_card` · `niche_render_reel` · `niche_attach_image` · `niche_reuse_asset`
+  - Image cards take optional art direction (steer the concept, skip the category clichés) and reframe to any platform's aspect ratio for free, reusing the retained background.
 
 **Brand + voice**
 - `niche_brand_profile_set` / `_get` · `niche_brand_kit_ingest` / `_ingest_status` / `_update` / `_guided_setup` · `niche_voice_profile_ingest`
