@@ -119,6 +119,7 @@ Full install notes: **[nicheangle.com/integrations](https://nicheangle.com/integ
 **Render**
 - `niche_render_image_card` · `niche_render_reel` · `niche_attach_image` · `niche_reuse_asset`
   - Image cards take optional art direction (steer the concept, skip the category clichés) and reframe to any platform's aspect ratio for free, reusing the retained background.
+  - `niche_attach_image` brings your OWN visual onto a post — upload base64 or pass an `image_url` (a card designed elsewhere, a product shot), stored server-side, free.
 
 **Brand + voice**
 - `niche_brand_profile_set` / `_get` · `niche_brand_kit_ingest` / `_ingest_status` / `_update` / `_guided_setup` · `niche_voice_profile_ingest`
@@ -127,7 +128,7 @@ Full install notes: **[nicheangle.com/integrations](https://nicheangle.com/integ
 - `niche_list_sessions` · `niche_add_output` · `niche_session_revert` · `niche_session_cancel` · `niche_session_export`
 
 **Account + orientation**
-- `niche_whoami` — account + plan + credit balance, the server's live tool count, the capability map (tools grouped by band + the recommended flow), and the brand state — one read-only call to orient before a run.
+- `niche_whoami` — the full tool catalog (every tool name + the live count) plus account, plan, credit balance, the capability map (tools grouped by band + the recommended flow), and brand state. One read-only call to discover everything available and orient before a run. (If your client only surfaces a few Niche tools, it cached an old list — reconnect, or call this to enumerate the rest.)
 
 Every tool response carries a **trust block** — verifier audit, source-faithfulness
 score, ungrounded-claim list, source-diversity + recency checks. Provenance is the
