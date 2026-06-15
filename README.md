@@ -134,6 +134,14 @@ Every tool response carries a trust block: verifier audit, source-faithfulness
 score, ungrounded-claim list, and source-diversity and recency checks. Provenance is
 the product.
 
+**Recent additions (1.4.0).** The tools gained finer control without new surface
+area. Read your resolved brand palette and connection state before a render or a
+publish. Schedule a post for later. Regenerate a fresh angle set. Reorder, insert, or
+delete carousel slides. Set a reel's length, motion, music direction, voice, and
+endcard mark. Place and size image-card text. Bring your own image and attach it to a
+post. Quote the credit cost of any step before spending. Every capability is reachable
+from both the agent tools and the Niche web app.
+
 ## Grounding: earned, not generated
 
 The narratives Niche returns are produced engine-side and fact-checked against
