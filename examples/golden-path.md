@@ -1,4 +1,4 @@
-# Example — the golden path (signal → story → angle → draft → publish)
+# Example: the golden path (signal → story → angle → draft → publish)
 
 The full editorial workflow as agent tool calls. Each step returns fast; you poll
 `niche_session_state` for the slow stages (discovery, generation).
@@ -21,16 +21,16 @@ niche_draft_create(session_id, angle_id = "angle_2")
   → poll niche_session_state until outputs[] is populated
   → each output carries a trust block (verifier audit, source faithfulness, ungrounded claims)
 
-# 5. Publish — the ONLY irreversible step. dry_run defaults to true.
+# 5. Publish: the one irreversible step. dry_run defaults to true.
 niche_draft_publish(session_id, platform = "linkedin", dry_run = true)
 ```
 
 ## Notes for agents
 
-- **Bind a brand profile** with `brand_id` (set via `niche_brand_profile_set`) to
+- Bind a brand profile with `brand_id` (set via `niche_brand_profile_set`) to
   thread voice, lexicon, framing, and verifier overrides through every stage.
-- **Trust block on every output** — check `source_faithfulness_score` and the
+- A trust block ships on every output. Check `source_faithfulness_score` and the
   ungrounded-claim list before presenting or publishing.
-- **Poll, don't hammer** — `niche_session_state` supports a `wait` long-poll.
+- Poll, don't hammer. `niche_session_state` supports a `wait` long-poll.
 - Skip discovery entirely with the "bring your own content" path: hand Niche your
-  Substack / article / take and it drafts straight from it (signal-to-story).
+  Substack post, article, or take and it drafts straight from it (signal-to-story).
