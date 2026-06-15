@@ -118,7 +118,7 @@ Full install notes: **[nicheangle.com/integrations](https://nicheangle.com/integ
 
 **Render**
 - `niche_render_image_card` · `niche_render_reel` · `niche_attach_image` · `niche_reuse_asset`
-  - Image cards take optional art direction (steer the concept, skip the category clichés) and reframe to any platform's aspect ratio for free, reusing the retained background.
+  - Three background modes: `photo` (a generated AI image, steerable via art direction to skip the clichés), `design` (a generated editorial GRAPHIC that draws the argument — a concept diagram, stat, pull-quote, or comparison; on-brand and legible, no photo), or `brand_color` (a free flat brand card). Plus free per-platform aspect reframes from the retained background.
   - `niche_attach_image` brings your OWN visual onto a post — upload base64 or pass an `image_url` (a card designed elsewhere, a product shot), stored server-side, free.
 
 **Brand + voice**
