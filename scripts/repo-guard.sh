@@ -27,7 +27,7 @@ while IFS= read -r f; do
 done < <(git ls-files)
 
 # ── 2. DENYLIST — internal content must never appear in tracked text. ──
-deny='SQMarketer|Platepusher|PlatePusher|Postdrome|Skinframe|Cal Anderson|cdav723|cal@sailquery|Projects/signal|/Users/|signal repo|the moat|BUILD_QUEUE|HITLIST|relitigate|inside.baseball|\bTODO\b|\bFIXME\b|\bWIP\b|\bXXX\b'
+deny='SQMarketer|Platepusher|PlatePusher|Postdrome|Skinframe|Cal Anderson|cdav723|cal@sailquery|Projects/signal|/Users/|signal repo|the moat|BUILD_QUEUE|HITLIST|relitigate|inside.baseball|Signal Finder|signal.?finder|\bforge\b|\biron\b|\bFable\b|spray.and.pray|\bTODO\b|\bFIXME\b|\bWIP\b|\bXXX\b'
 secret='BEGIN [A-Z ]*PRIVATE KEY|niche_sk_[A-Za-z0-9]{6,}|sk-[A-Za-z0-9]{20,}|AKIA[0-9A-Z]{16}|xox[bp]-|ghp_[A-Za-z0-9]{20,}'
 while IFS= read -r f; do
   [ "$f" = "scripts/repo-guard.sh" ] && continue   # the guard defines these patterns; never flag itself
