@@ -6,4 +6,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Public-repo brick wall (allowlist + no insider content)
+        env:
+          GUARD_DENYLIST: ${{ secrets.GUARD_DENYLIST }}
         run: bash scripts/repo-guard.sh
