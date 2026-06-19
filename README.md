@@ -118,8 +118,8 @@ Full install notes: **[nicheangle.com/integrations](https://nicheangle.com/integ
 
 **Render**
 - `niche_render_image_card` · `niche_render_reel` · `niche_attach_image` · `niche_reuse_asset`
-  - Three background modes: `photo` (a generated image, steerable via art direction to skip the clichés), `design` (a generated editorial graphic that draws the argument, such as a concept diagram, stat, pull-quote, or comparison; on-brand and legible, no photo), or `brand_color` (a free flat brand card). Plus free per-platform aspect reframes from the retained background.
-  - `niche_attach_image` brings your own visual onto a post. Upload base64 or pass an `image_url` (a card designed elsewhere, a product shot), stored server-side, free.
+  - Four background modes: `photo` (a generated image, steerable via art direction to skip the clichés), `design` (a generated editorial graphic that draws the argument, such as a concept diagram, stat, pull-quote, or comparison; on-brand and legible, no photo), `svg` (you author the exact card as SVG markup and it renders to size; free and deterministic, ideal for data, labels, and charts, and the one visual that works from any environment), or `brand_color` (a free flat brand card). Plus free per-platform aspect reframes from the retained background.
+  - `niche_attach_image` brings your own visual onto a post (a card designed elsewhere, a product shot), stored server-side, free. Provide it as a hosted `image_url`, a quick file upload that returns a reference, or chunked bytes, whichever your environment supports.
 
 **Brand and voice**
 - `niche_brand_profile_set` / `_get` · `niche_brand_kit_ingest` / `_ingest_status` / `_update` / `_guided_setup` · `niche_voice_profile_ingest`
