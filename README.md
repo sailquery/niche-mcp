@@ -1,6 +1,6 @@
 # Niche MCP: editorial intelligence for agents
 
-[![smithery badge](https://smithery.ai/badge/sailquery/niche)](https://smithery.ai/servers/sailquery/niche)
+[![LightNow MCP capabilities](https://lightnow.ai/badge/com.nicheangle/niche)](https://lightnow.ai/servers/com.nicheangle/niche)
 
 > **Find stories worth writing about.** Niche is an editorial intelligence
 > platform for individuals (and the agents working for them), exposed as a live
