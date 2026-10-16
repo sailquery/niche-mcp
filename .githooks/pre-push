@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# Check every proposed branch before its objects leave this checkout.
+set -euo pipefail
+root="$(git rev-parse --show-toplevel)"
+while read -r local_ref local_sha remote_ref remote_sha; do
+  [[ "$local_sha" =~ ^0+$ ]] && continue
+  base="$remote_sha"
+  if [[ "$base" =~ ^0+$ ]]; then
+    base="$(git merge-base refs/remotes/origin/master "$local_sha")"
+  fi
+  REQUIRE_PRIVATE_GUARD=true GUARD_BASE="$base" GUARD_HEAD="$local_sha" bash "$root/scripts/repo-guard.sh"
+done

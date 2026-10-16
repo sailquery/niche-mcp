@@ -1,48 +1,34 @@
-# Example: the intelligence query
+# Research a question with sourced synthesis
 
-The analyst move: get an intelligence answer, not a single post. This is the same
-engine the Niche web app uses, so you and the app get the same grounded narratives.
+Ask your assistant:
 
-## Prompt your agent
+> What changed in AI developer tools this week? Find up to ten developments and
+> identify themes supported by the reporting.
 
-> "Find the 10 biggest developments in defense tech this week and three non-obvious
-> narratives I could publish on LinkedIn."
+Example tool arguments:
 
-The agent maps that to:
-
+```json
+{
+  "name": "niche_intelligence_query",
+  "arguments": {
+    "subject": "AI developer tools and new model releases",
+    "count": 10,
+    "window": "week",
+    "recency_strict": true,
+    "synthesis": "narratives"
+  }
+}
 ```
-niche_intelligence_query(
-  subject = "defense tech, the week's biggest developments",
-  count   = 10,
-  window  = "week",
-  synthesis = "narratives",
-  platform  = "linkedin"
-)
-```
 
-Returns a `session_id` immediately (non-blocking). Poll `niche_session_state`
-until `status == cp1_awaiting_story`:
+The call returns a `session_id`. Poll `niche_session_state` using that ID until
+`status` is `cp1_awaiting_story`. The sourced developments are in `stories`.
+Synthesis may finish later: use `wait_until: "synthesis"` with `wait: 30` until
+it arrives or a shortfall is reported.
 
-- `stories[]`: the ranked slate of ~10 developments, each with provenance.
-- `synthesis[]`: the engine-grounded narratives, each citing real
-  `supporting_story_id`s. If the engine can only ground fewer than asked, it
-  returns fewer and says why (`synthesis_shortfall_note`). No source, no
-  narrative.
+Present the returned themes with their supporting stories and source links.
+Fewer than ten developments is a valid result when reporting is limited.
+Do not invent themes to reach a requested count.
 
-Present the narratives rather than synthesizing your own. They're already
-fact-checked against the slate.
-
-## Lenses
-
-- `lens: "emerging"`: surface low-coverage, pre-mainstream signal (inverts the authority re-rank).
-- `lens: "investment"`: bias toward funding, raise, and term-sheet markers; pairs with `synthesis: "patterns"`.
-
-## Turn a narrative into a post
-
-Pick the narrative's supporting story and draft from there, with no new research run:
-
-```
-niche_angle_propose(session_id, story_id)   # the strongest angles for that story
-niche_draft_create(session_id, angle_id)    # platform-native draft
-niche_draft_publish(session_id, ..., dry_run=true)
-```
+Use `synthesis: "patterns"` to request broader developments, or `"none"` for
+stories only. The optional `lens` can be `mainstream`, `emerging`, or `investment`.
+For an existing briefing, use `niche_feed_read` instead of starting a scan.

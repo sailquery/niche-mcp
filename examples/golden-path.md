@@ -1,36 +1,31 @@
-# Example: the golden path (signal → story → angle → draft → publish)
+# Read a briefing and research a follow-up
 
-The full editorial workflow as agent tool calls. Each step returns fast; you poll
-`niche_session_state` for the slow stages (discovery, generation).
+Ask your assistant:
 
-```
-# 1. Discover the stories worth writing about
-niche_signal_scan(niche = "AI infrastructure for solo developers")
-  → { session_id, status: "initializing" }
+> Read the latest Founders briefing. Tell me what changed and link to the reporting.
 
-# 2. Poll until the ranked slate is ready
-niche_session_state(session_id)
-  → status: "cp1_awaiting_story", stories: [ {id, title, summary, provenance, ...}, ... ]
+Example tool arguments:
 
-# 3. Pick a story → get the strongest angles worth publishing
-niche_angle_propose(session_id, story_id = "story_3")
-  → angles: [ {id, frame, hook, tension, cta_direction, ...}, ... ]
-
-# 4. Lock an angle → platform-native drafts (in the user's voice)
-niche_draft_create(session_id, angle_id = "angle_2")
-  → poll niche_session_state until outputs[] is populated
-  → each output carries a trust block (verifier audit, source faithfulness, ungrounded claims)
-
-# 5. Publish: the one irreversible step. dry_run defaults to true.
-niche_draft_publish(session_id, platform = "linkedin", dry_run = true)
+```json
+{"name":"niche_feed_read","arguments":{"niche":"founders"}}
 ```
 
-## Notes for agents
+Use the returned reporting dates, source links, and story status. `quiet` means
+there is no new briefing content; `no_edition` means a briefing is not available.
+A dated read accepts `date` in `YYYY-MM-DD` format.
 
-- Bind a brand profile with `brand_id` (set via `niche_brand_profile_set`) to
-  thread voice, lexicon, framing, and verifier overrides through every stage.
-- A trust block ships on every output. Check `source_faithfulness_score` and the
-  ungrounded-claim list before presenting or publishing.
-- Poll, don't hammer. `niche_session_state` supports a `wait` long-poll.
-- Skip discovery entirely with the "bring your own content" path: hand Niche your
-  Substack post, article, or take and it drafts straight from it (signal-to-story).
+For a follow-up that needs fresh research:
+
+```json
+{"name":"niche_signal_scan","arguments":{"niche":"Shopify updates and AI tools for founders","recency":"week","recency_strict":true}}
+```
+
+Keep the returned `session_id`. Poll `niche_session_state` with that ID and
+`wait: 30`. When the status is `cp1_awaiting_story`, inspect `stories` and their
+source links. If the scan fails, report the failure rather than treating it as
+an empty news day.
+
+To explore an angle, call `niche_angle_propose` with that `session_id` and a
+`story_id` from the returned list. Poll until `cp2_awaiting_angle` and read
+`angles`. Present the angle as interpretation and keep its supporting sources
+visible.

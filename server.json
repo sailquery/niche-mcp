@@ -1,9 +1,9 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "com.nicheangle/niche",
-  "title": "Niche — Editorial Intelligence",
-  "description": "Find the stories worth writing about: discover emerging stories, rank the angle, draft from sources.",
-  "version": "1.4.0",
+  "title": "Niche: Your niche, followed for you",
+  "description": "Read niche briefings, research news, and explore sourced story angles with your assistant.",
+  "version": "2.0.0",
   "websiteUrl": "https://nicheangle.com",
   "repository": {
     "url": "https://github.com/sailquery/niche-mcp",
@@ -13,7 +13,9 @@
     {
       "src": "https://raw.githubusercontent.com/sailquery/niche-mcp/master/icon.png",
       "mimeType": "image/png",
-      "sizes": ["1024x1024"]
+      "sizes": [
+        "1024x1024"
+      ]
     }
   ],
   "remotes": [
